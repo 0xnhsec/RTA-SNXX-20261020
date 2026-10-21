@@ -1,0 +1,24 @@
+sequenceDiagram
+    autonumber
+    participant M as Maintainer
+    participant P as Policy Gate
+    participant T as Temporary Profile
+    participant V as Verifier
+    participant E as Evidence Store
+
+    M->>P: Ajukan modul, metadata, dan lisensi
+    P-->>M: Verdict, trust tier, dan syarat
+    M->>T: Install opt-in, bukan profil default
+    T-->>M: Status instalasi
+    M->>V: Minta verifikasi independen
+    V->>T: Discovery, skill_view, dan reference
+    T-->>V: Output yang dapat diperiksa
+    V->>E: Simpan hasil dan checksum
+    E-->>V: Integrity check
+    alt Ada temuan
+        V-->>M: Temuan dan replikasi
+        M->>M: Perbaiki modul
+    else Lulus
+        V-->>M: Status lulus
+        M->>E: Tandai siap publikasi
+    end

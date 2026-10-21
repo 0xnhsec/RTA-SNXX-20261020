@@ -1,0 +1,18 @@
+flowchart TD
+    A["Inventaris empat repositori sumber"] --> B["Klasifikasi domain dan tumpang tindih"]
+    B --> C{"Lisensi cocok untuk tree MIT?"}
+    C -->|MIT| D["Konsolidasi modul MIT"]
+    C -->|GPL| E["Kemas sebagai paket terpisah"]
+    D --> F["Authoring kontrak skill"]
+    E --> F
+    F --> G["Policy review dan penentuan trust tier"]
+    G --> H{"Lolos policy gate?"}
+    H -->|Tidak| I["Revisi modul atau tolak"]
+    I --> F
+    H -->|Ya| J["Install opt-in di profil sementara"]
+    J --> K["Verifikasi discovery, view, dan reference"]
+    K --> L{"Verifikasi lulus?"}
+    L -->|Tidak| F
+    L -->|Ya| M["Evidence, checksum, dan audit"]
+    M --> N["Publikasi tersanitasi"]
+    N --> O["Opt-in runtime dan rollback"]

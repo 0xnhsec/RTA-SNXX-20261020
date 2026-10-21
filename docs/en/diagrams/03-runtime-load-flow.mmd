@@ -1,0 +1,10 @@
+flowchart LR
+    A["Operator selects a module"] --> B{"Module type"}
+    B -->|MIT adopted| C["Official / optional tier"]
+    B -->|GPL separate| D["External dir or separate package"]
+    C --> E["skills list"]
+    D --> E
+    E --> F["skill_view and references"]
+    F --> G["In-scope task"]
+    G --> H["Evidence and case report"]
+    H --> I["Disable or rollback"]

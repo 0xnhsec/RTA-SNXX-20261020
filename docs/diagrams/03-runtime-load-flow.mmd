@@ -1,0 +1,10 @@
+flowchart LR
+    A["Operator memilih modul"] --> B{"Jenis modul"}
+    B -->|MIT adopted| C["Tier official / optional"]
+    B -->|GPL separate| D["External dir atau paket terpisah"]
+    C --> E["skills list"]
+    D --> E
+    E --> F["skill_view dan reference"]
+    F --> G["Tugas dalam scope"]
+    G --> H["Evidence dan laporan case"]
+    H --> I["Disable atau rollback"]

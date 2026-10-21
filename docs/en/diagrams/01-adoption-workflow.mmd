@@ -1,0 +1,18 @@
+flowchart TD
+    A["Inventory four source repositories"] --> B["Classify domains and overlap"]
+    B --> C{"License compatible with the MIT tree?"}
+    C -->|MIT| D["Consolidate MIT modules"]
+    C -->|GPL| E["Package separately"]
+    D --> F["Author the skill contract"]
+    E --> F
+    F --> G["Policy review and trust-tier decision"]
+    G --> H{"Passes policy gate?"}
+    H -->|No| I["Revise module or reject"]
+    I --> F
+    H -->|Yes| J["Opt-in install in a temporary profile"]
+    J --> K["Verify discovery, view, and references"]
+    K --> L{"Verification passes?"}
+    L -->|No| F
+    L -->|Yes| M["Evidence, checksums, and audit"]
+    M --> N["Sanitized publication"]
+    N --> O["Opt-in runtime and rollback"]

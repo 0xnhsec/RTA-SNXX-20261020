@@ -1,0 +1,24 @@
+sequenceDiagram
+    autonumber
+    participant M as Maintainer
+    participant P as Policy Gate
+    participant T as Temporary Profile
+    participant V as Verifier
+    participant E as Evidence Store
+
+    M->>P: Submit module, metadata, and license
+    P-->>M: Verdict, trust tier, and conditions
+    M->>T: Opt-in install, not the default profile
+    T-->>M: Installation status
+    M->>V: Request independent verification
+    V->>T: Discovery, skill_view, and references
+    T-->>V: Inspectable output
+    V->>E: Store results and checksums
+    E-->>V: Integrity check
+    alt Findings exist
+        V-->>M: Findings and reproduction
+        M->>M: Fix the module
+    else Passed
+        V-->>M: Passed status
+        M->>E: Mark ready for publication
+    end
